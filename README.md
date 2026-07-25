@@ -17,9 +17,9 @@ Then open `http://localhost:4173`.
 
 ## Deploy
 
-The repository is connected to the existing Vercel project
-`manny-s-projects11/manny-ugc-systems`. Pushes to `main` deploy through Vercel,
-or deploy manually from the repository root:
+The repository deploys to the existing Vercel project
+`manny-s-projects11/manny-ugc-systems`. Pushes to `main` deploy through the
+included GitHub Actions workflow, or deploy manually from the repository root:
 
 ```bash
 vercel --prod
