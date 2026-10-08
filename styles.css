@@ -205,3 +205,27 @@ dialog{width:min(1100px,calc(100vw - 34px));max-height:calc(100vh - 34px);paddin
   .trace-links{display:grid}.trace-links a{justify-content:center;text-align:center}
   .output-review{grid-template-columns:1fr}.output-video{max-height:70vh}.final-assessment{grid-template-columns:1fr}.final-assessment>strong{grid-column:1}
 }
+
+
+/* Latest videos · LK India (section 02) */
+.latest-new{display:inline-block;margin-right:10px;padding:3px 7px;background:var(--acid);color:var(--ink);font-size:9px;font-weight:800;letter-spacing:.1em}
+.latest-tabs{display:grid;grid-template-columns:1fr 1fr;max-width:520px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+.latest-tabs button{display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-right:1px solid var(--line);border-bottom:2px solid transparent;background:transparent;color:var(--muted);padding:13px 18px;font:inherit;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.latest-tabs button:last-child{border-right:0}
+.latest-tabs button em{font-style:normal;font-weight:700;color:var(--muted)}
+.latest-tabs button[aria-selected="true"]{border-bottom-color:var(--acid);background:#10120d;color:var(--acid)}
+.latest-tabs button[aria-selected="true"] em{color:var(--acid)}
+.latest-panel[hidden]{display:none}
+.latest-grid{display:grid;gap:clamp(18px,2.4vw,32px);align-items:start}
+.latest-landscape .latest-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.latest-vertical .latest-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.latest-card{margin:0;min-width:0}
+.latest-frame{overflow:hidden;background:#000;border:1px solid #4b4e45}
+.latest-landscape .latest-frame{aspect-ratio:16/9}
+.latest-vertical .latest-frame{aspect-ratio:9/16}
+.latest-frame video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.latest-card figcaption{display:flex;flex-direction:column;gap:3px;padding-top:10px}
+.latest-card figcaption strong{font-size:14px;letter-spacing:-.02em}
+.latest-card figcaption span{color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:1100px){.latest-landscape .latest-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.latest-vertical .latest-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.latest-tabs{max-width:none}.latest-landscape .latest-grid{grid-template-columns:minmax(0,1fr)}.latest-vertical .latest-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}

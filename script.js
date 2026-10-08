@@ -377,3 +377,31 @@ document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('c
 }));
 
 renderNotes();
+
+/* Latest videos: Landscape / Vertical tabs, one video plays at a time */
+(() => {
+  const section = document.querySelector('#latest');
+  const tabs = [...document.querySelectorAll('[data-latest-tab]')];
+  if (!section || !tabs.length) return;
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+  const pauseAll = except => section.querySelectorAll('video').forEach(video => { if (video !== except) video.pause(); });
+  function select(tab, focus) {
+    tabs.forEach((item, index) => {
+      const on = item === tab;
+      item.setAttribute('aria-selected', String(on));
+      item.tabIndex = on ? 0 : -1;
+      panels[index].hidden = !on;
+    });
+    pauseAll();
+    if (focus) tab.focus();
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      select(tabs[(index + (event.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true);
+    });
+  });
+  section.addEventListener('play', event => { if (event.target.tagName === 'VIDEO') pauseAll(event.target); }, true);
+})();
